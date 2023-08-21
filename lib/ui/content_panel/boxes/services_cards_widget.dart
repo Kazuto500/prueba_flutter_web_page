@@ -163,7 +163,7 @@ class ServiceCard extends StatelessWidget {
                                     color: labelColor),
                               ),
                             ),
-                            Row(
+                            Wrap(
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.all(4),

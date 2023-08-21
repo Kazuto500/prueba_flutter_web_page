@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:prueba_flutter_web_page/widgets/lateral_menu/lateral_menu_widget.dart';
-import 'package:prueba_flutter_web_page/widgets/services/content_section_widget.dart';
+import 'package:provider/provider.dart';
+import 'package:prueba_flutter_web_page/data/controllers/session_controller.dart';
+import 'package:prueba_flutter_web_page/ui/lateral_menu/lateral_menu_widget.dart';
+import 'package:prueba_flutter_web_page/ui/content_panel/boxes/content_section_widget.dart';
 
 class HomePage extends StatelessWidget {
   final ImageProvider<Object> _userImage;
@@ -155,33 +157,47 @@ class HomePage extends StatelessWidget {
                   CircleAvatar(
                     backgroundImage: _userImage,
                   ),
-                  PopupMenuButton(
-                    icon: const Icon(
-                      Icons.arrow_drop_down,
-                      color: Colors.blueGrey,
-                    ),
-                    itemBuilder: (BuildContext context) =>
-                        <PopupMenuEntry<dynamic>>[
-                      PopupMenuItem(
-                        child: ListTile(
-                          leading: CircleAvatar(
-                            backgroundImage: _userImage,
-                          ),
-                          title: const Text('Usuario'),
-                          onTap: () {},
-                        ),
+                  Consumer<SessionController>(
+                    builder: (context, sessionController, child) =>
+                        PopupMenuButton(
+                      icon: const Icon(
+                        Icons.arrow_drop_down,
+                        color: Colors.blueGrey,
                       ),
-                      const PopupMenuDivider(),
-                      ...[
-                        'Opción 1',
-                        'Opción 2',
-                      ]
-                          .map((String option) => PopupMenuItem(
-                                child: Text(option),
-                              ))
-                          .toList(),
-                    ],
-                  ),
+                      itemBuilder: (BuildContext context) =>
+                          <PopupMenuEntry<dynamic>>[
+                        // PopupMenuItem(
+                        //   child: ListTile(
+                        //     leading: CircleAvatar(
+                        //       backgroundImage: _userImage,
+                        //     ),
+                        //     title: const Text('Usuario'),
+                        //     onTap: () {},
+                        //   ),
+                        // ),
+                        // const PopupMenuDivider(),
+                        // ...[
+                        //   'Opción 1',
+                        //   'Opción 2',
+                        // ]
+                        //     .map((String option) => PopupMenuItem(
+                        //           child: Text(option),
+                        //         ))
+                        //     .toList(),
+                        PopupMenuItem(
+                          child: Text('Log out'),
+                          onTap: () {
+                            sessionController.logout(
+                              onSuccess: () {
+                                Navigator.of(context).pushNamedAndRemoveUntil(
+                                    "landing", (route) => false);
+                              },
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                  )
                 ],
               ),
             ],

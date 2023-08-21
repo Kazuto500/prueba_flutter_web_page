@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:prueba_flutter_web_page/widgets/lateral_menu/top_bar/elements/top_bar_button_widget.dart';
+import 'package:prueba_flutter_web_page/ui/lateral_menu/top_bar/elements/top_bar_button_widget.dart';
 
 class TopBar extends StatelessWidget {
   const TopBar({Key? key}) : super(key: key);

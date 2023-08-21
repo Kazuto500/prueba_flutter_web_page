@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:prueba_flutter_web_page/data/controllers/user_controller.dart';
 
 class ProfileResume extends StatelessWidget {
   const ProfileResume({Key? key}) : super(key: key);
@@ -52,14 +54,18 @@ class ProfileResume extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Text(
-                      "John Doe",
-                      style: TextStyle(
-                        fontSize:
-                            Theme.of(context).textTheme.titleLarge!.fontSize,
-                        fontWeight:
-                            Theme.of(context).textTheme.titleLarge!.fontWeight,
-                        color: const Color(0xff424b5a),
+                    Consumer<UserController>(
+                      builder: (context, userController, child) => Text(
+                        userController.currentUser!.firstName,
+                        style: TextStyle(
+                          fontSize:
+                              Theme.of(context).textTheme.titleLarge!.fontSize,
+                          fontWeight: Theme.of(context)
+                              .textTheme
+                              .titleLarge!
+                              .fontWeight,
+                          color: const Color(0xff424b5a),
+                        ),
                       ),
                     ),
                     Text(

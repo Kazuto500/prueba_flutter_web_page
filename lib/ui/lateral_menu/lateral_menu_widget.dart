@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:prueba_flutter_web_page/widgets/lateral_menu/bottom_bar/bottom_bar_widget.dart';
-import 'package:prueba_flutter_web_page/widgets/lateral_menu/profile_resume/profile_resume_widget.dart';
-import 'package:prueba_flutter_web_page/widgets/lateral_menu/top_bar/top_bar_widget.dart';
+import 'package:prueba_flutter_web_page/ui/lateral_menu/bottom_bar/bottom_bar_widget.dart';
+import 'package:prueba_flutter_web_page/ui/lateral_menu/profile_resume/profile_resume_widget.dart';
+import 'package:prueba_flutter_web_page/ui/lateral_menu/top_bar/top_bar_widget.dart';
 
 class LateralMenu extends StatelessWidget {
   const LateralMenu({Key? key}) : super(key: key);
