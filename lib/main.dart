@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:prueba_flutter_web_page/data/controllers/box_controller.dart';
 import 'package:prueba_flutter_web_page/data/controllers/session_controller.dart';
 import 'package:prueba_flutter_web_page/data/controllers/user_controller.dart';
+import 'package:prueba_flutter_web_page/data/navigator_controller.dart';
 import 'package:prueba_flutter_web_page/ui/pages/landing/landing_page.dart';
 import 'package:prueba_flutter_web_page/ui/pages/login/login_page.dart';
 import 'package:prueba_flutter_web_page/ui/pages/register/register_page.dart';
@@ -20,6 +21,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => SessionController(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => NavigatorController(),
         ),
         ChangeNotifierProvider(
           create: (context) => UserController(),

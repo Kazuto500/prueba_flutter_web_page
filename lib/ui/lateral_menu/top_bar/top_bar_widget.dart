@@ -17,26 +17,12 @@ class TopBar extends StatelessWidget {
       child: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 32, vertical: 4),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             TopBarButton(
               isSelected: true,
               iconRoute: "assets/lmi1.jpg",
-              name: "ActionPower",
-            ),
-            TopBarButton(
-              isSelected: false,
-              iconRoute: "assets/lmi2.jpg",
-              name: "SeedCoins",
-            ),
-            TopBarButton(
-              isSelected: false,
-              iconRoute: "assets/lmi3.jpg",
-              name: "WeSocial",
-            ),
-            TopBarButton(
-              isSelected: false,
-              iconRoute: "assets/lmi4.jpg",
-              name: "WeChat",
+              name: "Boxes",
             ),
           ],
         ),

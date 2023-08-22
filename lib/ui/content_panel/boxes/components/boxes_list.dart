@@ -1,14 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 import 'package:prueba_flutter_web_page/data/controllers/box_controller.dart';
 import 'package:prueba_flutter_web_page/data/controllers/session_controller.dart';
-import 'package:prueba_flutter_web_page/data/controllers/user_controller.dart';
-import 'package:prueba_flutter_web_page/ui/content_panel/boxes/services_cards_widget.dart';
+import 'package:prueba_flutter_web_page/ui/content_panel/boxes/components/box_card.dart';
 
-class Services extends StatelessWidget {
-  const Services({Key? key}) : super(key: key);
+class BoxesList extends StatelessWidget {
+  const BoxesList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +36,11 @@ class Services extends StatelessWidget {
             crossAxisCount: (size.width - securitySpace > 500) ? 2 : 1,
             children: List.generate(
               boxController.currentBoxes!.length,
-              (index) => ServiceCard(
-                sectionName: boxController.currentBoxes![index].name,
+              (index) => BoxCard(
+                boxId: boxController.currentBoxes![index].id,
+                image: boxController.currentBoxes![index].image,
+                name: boxController.currentBoxes![index].name,
+                description: boxController.currentBoxes![index].description,
                 sectionColor: const Color(0xff044a88),
                 labelColor: const Color(0xffffffff),
                 iconBackgroundColor: const Color(0xffffffff),

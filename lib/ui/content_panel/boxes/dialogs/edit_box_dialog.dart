@@ -4,21 +4,30 @@ import 'package:prueba_flutter_web_page/data/controllers/box_controller.dart';
 import 'package:prueba_flutter_web_page/data/controllers/session_controller.dart';
 import 'package:prueba_flutter_web_page/theme/platform_colors.dart';
 
-class CreateBoxDialog extends StatefulWidget {
-  const CreateBoxDialog({super.key});
+class EditBoxDialog extends StatefulWidget {
+  final int boxId;
+  final String boxImageUrl;
+  final String boxName;
+  final String boxDescription;
+  const EditBoxDialog({
+    super.key,
+    required this.boxId,
+    required this.boxImageUrl,
+    required this.boxName,
+    required this.boxDescription,
+  });
 
   @override
-  State<CreateBoxDialog> createState() => _CreateBoxDialogState();
+  State<EditBoxDialog> createState() => _EditBoxDialogState();
 }
 
-class _CreateBoxDialogState extends State<CreateBoxDialog> {
-  TextEditingController imageController = TextEditingController(
-      text:
-          "https://images.unsplash.com/photo-1504805572947-34fad45aed93?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y292ZXIlMjBwaG90b3N8ZW58MHx8MHx8fDA%3D&w=1000&q=80");
-  TextEditingController nameController =
-      TextEditingController(text: "Box de prueba #");
-  TextEditingController descriptionController =
-      TextEditingController(text: "Descripción del box #");
+class _EditBoxDialogState extends State<EditBoxDialog> {
+  late TextEditingController imageController =
+      TextEditingController(text: widget.boxImageUrl);
+  late TextEditingController nameController =
+      TextEditingController(text: widget.boxName);
+  late TextEditingController descriptionController =
+      TextEditingController(text: widget.boxDescription);
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   InputDecoration getInputDecoration({required String label}) {
@@ -54,7 +63,7 @@ class _CreateBoxDialogState extends State<CreateBoxDialog> {
                 children: [
                   const Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text("Create box"),
+                    child: Text("Edit box"),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -84,8 +93,9 @@ class _CreateBoxDialogState extends State<CreateBoxDialog> {
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
                               //
-                              boxController.createBox(
+                              boxController.editBox(
                                 sessionKey: sessionController.sessionKey!,
+                                boxId: widget.boxId,
                                 image: imageController.value.text.trim(),
                                 name: nameController.value.text.trim(),
                                 description:
@@ -113,7 +123,7 @@ class _CreateBoxDialogState extends State<CreateBoxDialog> {
                               secondaryAlternColor,
                             ),
                           ),
-                          child: const Text("Create"),
+                          child: const Text("Save"),
                         ),
                       );
                     },
@@ -127,3 +137,36 @@ class _CreateBoxDialogState extends State<CreateBoxDialog> {
     );
   }
 }
+
+// Consumer2<SessionController, BoxController>(
+//                 builder: (context, sessionController, boxController, child) =>
+//                     ElevatedButton(
+//                   style: ButtonStyle(
+//                     shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+//                       RoundedRectangleBorder(
+//                         borderRadius: BorderRadius.circular(24),
+//                       ),
+//                     ),
+//                     minimumSize: MaterialStateProperty.all(
+//                       const Size(48, 48),
+//                     ),
+//                     backgroundColor: MaterialStateProperty.all(
+//                       secondaryAlternColor,
+//                     ),
+//                   ),
+//                   onPressed: () {
+//                     boxController.deleteBox(
+//                       sessionKey: sessionController.sessionKey!,
+//                       boxId: boxId,
+//                       onSuccess: () {
+//                         Navigator.of(context).pop();
+//                         boxController.getBoxes(
+//                             sessionKey: sessionController.sessionKey!);
+//                       },
+//                     );
+//                   },
+//                   child: const Text(
+//                     "Eliminar",
+//                   ),
+//                 ),
+//               ),

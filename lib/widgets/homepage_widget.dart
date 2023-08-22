@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:prueba_flutter_web_page/data/controllers/session_controller.dart';
 import 'package:prueba_flutter_web_page/ui/lateral_menu/lateral_menu_widget.dart';
-import 'package:prueba_flutter_web_page/ui/content_panel/boxes/content_section_widget.dart';
+import 'package:prueba_flutter_web_page/ui/content_panel/content_section_widget.dart';
 
 class HomePage extends StatelessWidget {
   final ImageProvider<Object> _userImage;
@@ -166,26 +166,8 @@ class HomePage extends StatelessWidget {
                       ),
                       itemBuilder: (BuildContext context) =>
                           <PopupMenuEntry<dynamic>>[
-                        // PopupMenuItem(
-                        //   child: ListTile(
-                        //     leading: CircleAvatar(
-                        //       backgroundImage: _userImage,
-                        //     ),
-                        //     title: const Text('Usuario'),
-                        //     onTap: () {},
-                        //   ),
-                        // ),
-                        // const PopupMenuDivider(),
-                        // ...[
-                        //   'Opción 1',
-                        //   'Opción 2',
-                        // ]
-                        //     .map((String option) => PopupMenuItem(
-                        //           child: Text(option),
-                        //         ))
-                        //     .toList(),
                         PopupMenuItem(
-                          child: Text('Log out'),
+                          child: const Text('Log out'),
                           onTap: () {
                             sessionController.logout(
                               onSuccess: () {
@@ -208,7 +190,7 @@ class HomePage extends StatelessWidget {
         child: Row(
           children: [
             if (size.width > 680) const LateralMenu(),
-            const ContentSection(),
+            const Expanded(child: ContentSection()),
           ],
         ),
       ),

@@ -1,16 +1,16 @@
-class BoxModel {
+class APModel {
   int id;
   String image, name, description;
 
-  BoxModel({
+  APModel({
     required this.id,
     required this.image,
     required this.name,
     required this.description,
   });
 
-  factory BoxModel.fromJson(Map<String, dynamic> data) {
-    return BoxModel(
+  factory APModel.fromJson(Map<String, dynamic> data) {
+    return APModel(
       id: data["id"],
       image: data["image"],
       name: data["name"],

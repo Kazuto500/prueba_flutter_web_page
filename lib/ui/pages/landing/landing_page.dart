@@ -17,32 +17,34 @@ class LandingPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
-                    onPressed: () {
-                      //
-                      showDialog(
-                        context: context,
-                        builder: (context) => Dialog(
-                          backgroundColor: Colors.white,
-                          child: RegisterPage(),
-                        ),
-                      );
-                    },
-                    child: Text("Register")),
+                  onPressed: () {
+                    //
+                    showDialog(
+                      context: context,
+                      builder: (context) => const Dialog(
+                        backgroundColor: Colors.white,
+                        child: RegisterPage(),
+                      ),
+                    );
+                  },
+                  child: const Text("Register"),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
-                    onPressed: () {
-                      //
-                      showDialog(
-                        context: context,
-                        builder: (context) => Dialog(
-                          backgroundColor: Colors.white,
-                          child: LoginPage(),
-                        ),
-                      );
-                    },
-                    child: Text("Login")),
+                  onPressed: () {
+                    //
+                    showDialog(
+                      context: context,
+                      builder: (context) => const Dialog(
+                        backgroundColor: Colors.white,
+                        child: LoginPage(),
+                      ),
+                    );
+                  },
+                  child: const Text("Login"),
+                ),
               )
             ],
           ),
